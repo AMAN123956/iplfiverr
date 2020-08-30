@@ -566,7 +566,7 @@ app.post("/cbowler", async(req, res) =>{
 })
 
 
-app.post("/ubowler", (req, res)=> {
+app.post("/ubowler", (req, res) => {
   async function hello(){
     const ubowler = req.body.uncappedBowler;
     const team = req.body.team;
@@ -591,10 +591,10 @@ app.post("/ubowler", (req, res)=> {
     const battingStyle = cricketData.battingStyle;
     const bowlingStyle = cricketData.bowlingStyle;
     /* ListA t20 career*/
-    const odiMatches = cricketData.data.bowling.listA.Mat;
+   /* const odiMatches = cricketData.data.bowling.listA.Mat;
     const odiWickets = cricketData.data.bowling.listA.Wkts;
     const odiEcon = cricketData.data.bowling.listA.Econ;
-    const odiBest = cricketData.data.bowling.listA.BBM;
+    const odiBest = cricketData.data.bowling.listA.BBM; */
 
     var test = `<!DOCTYPE html>
         <html lang="en">
@@ -667,37 +667,7 @@ app.post("/ubowler", (req, res)=> {
                         
                     </table>
                 </div>
-                <div id="section3" style="display: flex;">
-                
-                 <div id="card2" style="box-shadow:0px 0px 10px 1px black;margin:30px;padding:40px;">
-                    <h3>ListA Carrer:</h3>
-                    <table>
-                        <tr>
-                            <th>Matches</th>
-                            <td  style="padding-left:25px;">${odiMatches}</td>
-                        </tr>
-                        
-                        <tr>
-                            <th>Wickets</th>
-                            <td  style="padding-left:25px;">${odiWickets}</td>
-                        </tr>
-        
-                       
-        
-                        <tr>
-                            <th>Economy</th>
-                            <td  style="padding-left:25px;">${odiEcon}</td>
-                        </tr>
-        
-                        <tr>
-                            <th>Best Figures</th>
-                            <td  style="padding-left:25px;">${odiBest}</td>
-                        </tr>
-                        
-                    </table>
-                 </div>
-              
-                </div>
+             
             </div>
         </body>
         </html>`;
