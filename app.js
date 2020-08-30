@@ -395,7 +395,7 @@ app.post("/ubatsman", async(req, res) =>{
 })
 
 
-app.post("/cbowler", async(req, res) =>{
+app.post("/cbowler", (async(req, res) =>{
     const bowler = req.body.cappedBowler;
     const team = req.body.team;
     const T = req.body.T;
@@ -563,11 +563,11 @@ app.post("/cbowler", async(req, res) =>{
     res.write(test);
 
     res.send();
-})
+})()
 .catch(err => {
     console.log('There has been a problem with your fetch operation: ' + err.message);
-  });
-
+  })
+)
 
 app.post("/ubowler", async(req, res)=> {
     const ubowler = req.body.uncappedBowler;
