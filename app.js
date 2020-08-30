@@ -80,7 +80,7 @@ app.post("/feedback", (req,res)=>{
      res.end();
     });
 
-app.post("/cbatsman", async (req, res) => {
+app.post("/cbatsman",  (req, res) => {
     const batsman = req.body.cappedBatsman;
     const team = req.body.team;
     const numberBat = Number(batsman);
@@ -89,9 +89,11 @@ app.post("/cbatsman", async (req, res) => {
     const appKey = process.env.KEY1;
 
     const url = `https://cricapi.com/api/playerStats?apikey=${appKey}&pid=${numberBat}`;
-    const fetch_response = await fetch(url);
-    const cricketData = await fetch_response.json();
-
+     fetch(url)
+     .then(fetch_response => {
+         return fetch_response.json();
+     }).then((cricketData)=>{
+    
     const img = (cricketData.imageURL) || ("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSAqgwETNY6BqOd76U888zJtx4529Ggiamqsw&usqp=CAU");
     const name = cricketData.name;
     const age = cricketData.currentAge;
@@ -110,7 +112,7 @@ app.post("/cbatsman", async (req, res) => {
     const t20Runs = cricketData.data.batting.T20Is.Runs;
     const t20Fifty = cricketData.data.batting.T20Is[50];
     const t20Hundred = cricketData.data.batting.T20Is[100];
-
+   
     var test = `<!DOCTYPE html>
          <html lang="en">
          <head>
@@ -246,6 +248,10 @@ app.post("/cbatsman", async (req, res) => {
     res.write(test);
 
     res.send();
+})
+.catch(err => {
+    console.log(err);
+})
 })
 
 
