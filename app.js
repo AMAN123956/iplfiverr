@@ -671,14 +671,16 @@ app.post("/ubowler", (req, res) => {
             </div>
         </body>
         </html>`;
+        res.write(test);
+        res.send();
+    }
+    hello().catch(err => {
+        console.log(err);
+    })
+    
 
-    res.write(test);
-
-    res.send();
-                }
-                hello().catch(err => {
-                    console.log(err);
-                })
+   
+               
 })
 
 
