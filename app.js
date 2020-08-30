@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -6,11 +6,13 @@ const fetch = require("node-fetch");
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
 
-
-
+app.use(express.static("public"));
+app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -84,7 +86,7 @@ app.post("/cbatsman", async (req, res) => {
     const numberBat = Number(batsman);
     const T = req.body.T;
 
-    const appKey = process.env.key1;
+    const appKey = process.env.KEY1;
 
     const url = `https://cricapi.com/api/playerStats?apikey=${appKey}&pid=${numberBat}`;
     const fetch_response = await fetch(url);
@@ -257,7 +259,7 @@ app.post("/ubatsman", async(req, res) =>{
 
 
 
-    const appKey = process.env.key1;
+    const appKey = process.env.KEY1;
 
     const url = `https://cricapi.com/api/playerStats?apikey=${appKey}&pid=${numberBat}`;
 
@@ -396,7 +398,7 @@ app.post("/cbowler", async(req, res) =>{
 
 
 
-    const appKey = process.env.key1;
+    const appKey = process.env.KEY1;
 
     const url = `https://cricapi.com/api/playerStats?apikey=${appKey}&pid=${numberBowl}`;
 
@@ -567,7 +569,7 @@ app.post("/ubowler", async(req, res)=> {
 
 
 
-    const appKey = process.env.key1;
+    const appKey = process.env.KEY1;
 
     const url = `https://cricapi.com/api/playerStats?apikey=${appKey}&pid=${numberBowl}`;
 
@@ -707,7 +709,7 @@ app.post("/callRounder", async (req, res)=> {
     const numberBat = Number(allRounder);
 
 
-    const appKey = process.env.key2;
+    const appKey = process.env.KEY2;
 
     const url = `https://cricapi.com/api/playerStats?apikey=${appKey}&pid=${numberBat}`;
     const fetch_response = await fetch(url);
@@ -876,7 +878,7 @@ app.post("/uallRounder", async (req, res)=> {
 
 
 
-    const appKey = process.env.key2;
+    const appKey = process.env.KEY2;
 
     const url = `https://cricapi.com/api/playerStats?apikey=${appKey}&pid=${numberBat}`;
 
@@ -1041,7 +1043,7 @@ app.post("/uallRounder", async (req, res)=> {
 app.post("/playerInfo", async (req, res)=> {
     const playerName = req.body.playerName;
 
-    const appKey = process.env.key1;
+    const appKey = process.env.KEY1;
 
     const url = `https://cricapi.com/api/playerFinder?apikey=${appKey}&name=${playerName}`;
 
@@ -1129,7 +1131,7 @@ app.post("/playerInfo", async (req, res)=> {
     app.post("/playerDetails", async (req, res) => {
         let Pid = req.body.Pid;
 
-        const appKey = process.env.key2;
+        const appKey = process.env.KEY2;
 
         const url = `https://cricapi.com/api/playerStats?apikey=${appKey}&pid=${Pid}`;
 
@@ -1261,6 +1263,6 @@ app.post("/playerInfo", async (req, res)=> {
 });
 
 
-app.listen(process.env.port||3000, () => {
-    console.log("server is running on port 3000");
+app.listen(PORT, () => {
+    console.log("server is running on port 80");
 });
