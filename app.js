@@ -8,8 +8,6 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static("public"));
-app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
 
@@ -92,17 +90,17 @@ app.post("/cbatsman",  (req, res) => {
      fetch(url)
      .then(fetch_response => {
          return fetch_response.json();
-     }).then((cricketData)=>{
-    
+     })
+     .then((cricketData) => {
+   
+   
     const img = (cricketData.imageURL) || ("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSAqgwETNY6BqOd76U888zJtx4529Ggiamqsw&usqp=CAU");
     const name = cricketData.name;
     const age = cricketData.currentAge;
     const born = cricketData.born;
     const battingStyle = cricketData.battingStyle;
     const bowlingStyle = cricketData.bowlingStyle || "null";
-    console.log(cricketData.data.batting.ODIs);
-    console.log(cricketData.data.batting.ODIs);
-
+   
     const odiMatches = cricketData.data.batting.ODIs.Mat;
     const odiRuns = cricketData.data.batting.ODIs.Runs;
     const odiFifty = cricketData.data.batting.ODIs[50];
@@ -244,14 +242,15 @@ app.post("/cbatsman",  (req, res) => {
              </div>
          </body>
          </html>`;
-
+       
     res.write(test);
 
     res.send();
 })
 .catch(err => {
-    console.log(err);
-})
+console.log(err);
+  })
+
 })
 
 
@@ -1046,15 +1045,19 @@ app.post("/uallRounder", async (req, res)=> {
 })
 
 
-app.post("/playerInfo", async (req, res)=> {
+app.post("/playerInfo", (req, res)=> {
     const playerName = req.body.playerName;
 
     const appKey = process.env.KEY1;
 
     const url = `https://cricapi.com/api/playerFinder?apikey=${appKey}&name=${playerName}`;
 
-    const fetch_response = await fetch(url);
-    const cricketData = await fetch_response.json();
+ fetch(url)
+ .then(fetch_response => {
+     return fetch_response.json();
+ })
+ .then(cricketData => {
+   
 
     console.log(cricketData.data.length);
     let pid = [], name = [], fullname = [];
@@ -1132,17 +1135,20 @@ app.post("/playerInfo", async (req, res)=> {
 
 
         res.write(test[i]);
-    }
-
-    app.post("/playerDetails", async (req, res) => {
+ 
+                }
+    app.post("/playerDetails", (req, res) => {
         let Pid = req.body.Pid;
 
         const appKey = process.env.KEY2;
 
         const url = `https://cricapi.com/api/playerStats?apikey=${appKey}&pid=${Pid}`;
 
-        const fetch_response = await fetch(url);
-        const cricData = await fetch_response.json();
+        fetch(url).then(fetch_response => {
+            return fetch_response.json()
+        })
+        .then(cricData => {
+        
 
         const img = (cricData.imageURL);
         const name = cricData.name;
@@ -1263,9 +1269,17 @@ app.post("/playerInfo", async (req, res)=> {
 
         res.write(detail);
         res.send();
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
     });
 
     res.send();
+})
+.catch(err => {
+    console.log(err);
+})
 });
 
 
