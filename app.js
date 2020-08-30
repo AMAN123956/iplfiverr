@@ -564,6 +564,9 @@ app.post("/cbowler", async(req, res) =>{
 
     res.send();
 })
+.catch(err => {
+    console.log('There has been a problem with your fetch operation: ' + err.message);
+  });
 
 
 app.post("/ubowler", async(req, res)=> {
@@ -1283,6 +1286,6 @@ app.post("/playerInfo", (req, res)=> {
 });
 
 
-app.listen(PORT, () => {
-    console.log("server is running on port 80");
+app.listen(process.env.PORT || 3000 , () => {
+    console.log("server is running on port 3000");
 });
