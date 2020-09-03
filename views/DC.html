@@ -7,6 +7,8 @@
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!--   icons css -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css2?family=Cabin+Condensed&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
@@ -41,9 +43,12 @@
 
 
 
-    .myFloat:hover {
-      filter: saturate(10);
-    }
+.myFloat:hover{
+    filter: saturate(2);
+}
+a{
+    color: black;
+}
 
     #float:hover {
       transform: rotateY(180deg);
@@ -169,7 +174,7 @@
 
     <div id="s1">
       <!-- <img src="teamsSvg/mi.png" alt="MI" style="width: 100px;"> -->
-      <img src="teamBgs/dcBg.jpg" alt="" id="s1img">
+      <img src="teamBGs/dcBG.jpg" alt="" id="s1img">
       <span>
         <p style="font-weight: 900;font-size: 1.8rem;padding-top: 60px;">DELHI CAPITALS</p>
       
@@ -196,7 +201,6 @@
             <option value="642519">Shreyas Iyer</option>
             <option value="326434">Alex Carey</option>
             <option value="931581">Rishabh Pant</option>
-            <option value="670025">Shimron Hetmyer</option>
             <option value="277916">Ajinkye Rahane</option>
             <option value="28235">Shikhar Dhawan</option>
             <option value="298438">Jason Roy</option>
@@ -213,6 +217,7 @@
           <select name="uncappedBatsman" style="display: inline-block;">
                
             <option value="1070168">Prithvi Shaw</option>
+            <option value="670025">Shimron Hetmyer</option>
             
           </select>
           <button type="submit">Find</button>
@@ -222,18 +227,28 @@
           <input type="text" value="DELHI CAPITALS" name="team" style="display: none;">
           <input type="text" value="DC" name="T" style="display: none;">
           <select name="cappedBowler" style="display: inline-block;">
-           
-            <option value="422708">Mohit Sharma</option>
+          
             <option value="550215">Kagiso Rabada</option>
             <option value="26421">Ravichandran Ashwin</option>
             <option value="236779">Ishant Sharma</option>
             <option value="31107">Amit Mishra</option>
-            <option value="960361">Sandeep Lamichhane</option>
             
           </select>
           <button type="submit">Find</button>
         </form>
     
+<form action="/ubowler" method="POST">
+<h4>UnCapped Bowlers:</h4>
+<input type="text" value="DELHI CAPITALS" name="team" style="display: none;">
+<input type="text" value="DC" name="T" style="display: none;">
+<select name="uncappedBowler" style="display: inline-block;">
+
+<option value="422708">Mohit Sharma</option>
+<option value="960361">Sandeep Lamichhane</option>
+  
+</select>
+<button type="submit">Find</button>
+</form>
         
         <form action="/callRounder" method="POST">
           <h4>AllRounders:</h4>

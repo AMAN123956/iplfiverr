@@ -105,12 +105,16 @@ body{
 }
 
 .myFloat:hover{
-    filter: saturate(10);
+    filter: saturate(2);
+}
+a{
+    color: black;
 }
 
 #footer{
     background-color: #4b5d67; 
     margin-top: 60px;
+    font-family: 'Cairo', sans-serif;
     /* text-align: center; */
 }
 
