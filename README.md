@@ -1,4 +1,4 @@
-# IplHeat
+# TechKart
 [![GitHub forks](https://img.shields.io/github/forks/AMAN123956/iplfiverr?style=social&label=Fork&maxAge=2592000)](https://github.com/AMAN123956/iplfiverr)
 [![GitHub stars](https://img.shields.io/github/stars/AMAN123956/iplfiverr?style=social&label=Star&maxAge=2592000)](https://github.com/AMAN123956/iplfiverr)
 [![GitHub watchers](https://img.shields.io/github/watchers/AMAN123956/iplfiverr?style=social&label=Watch&maxAge=2592000)](https://github.com/AMAN123956/iplfiverr)
